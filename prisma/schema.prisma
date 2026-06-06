@@ -1,0 +1,122 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Era {
+  id      String   @id @default(uuid())
+  name    String   @unique
+
+  players Player[]
+
+  @@map("eras")
+}
+
+model Team {
+  id   String @id @default(uuid())
+  name String @unique
+  icon String
+
+  players Player[]
+
+  @@map("teams")
+}
+
+model Player {
+  id            String  @id @default(uuid())
+  name          String
+  team_id       String
+  era_id        String
+  overall       Int
+  pos_principal String
+  pos_sec1      String?
+  pos_sec2      String?
+  estilo        String
+
+  team     Team      @relation(fields: [team_id], references: [id])
+  era      Era       @relation(fields: [era_id], references: [id])
+  drafts   Draft[]
+  rankings Ranking[]
+
+  @@map("players")
+}
+
+model Game {
+  id           String   @id @default(uuid())
+  player_uuid  String
+  formation    String
+  rerolls_used Int      @default(0)
+  schedule     Json?
+  ranking      String?
+  pts          Int?
+  v            Int?
+  e            Int?
+  d            Int?
+  gf           Int?
+  gc           Int?
+  created_at   DateTime @default(now())
+
+  drafts   Draft[]
+  matches  Match[]
+  ranking_ Ranking?
+
+  @@map("games")
+}
+
+model Draft {
+  id         String @id @default(uuid())
+  game_id    String
+  player_id  String
+  slot_pos   String
+  slot_index Int
+
+  game   Game   @relation(fields: [game_id], references: [id], onDelete: Cascade)
+  player Player @relation(fields: [player_id], references: [id])
+
+  @@map("drafts")
+}
+
+model Match {
+  id        String  @id @default(uuid())
+  game_id   String
+  rodada    Int
+  opp_team  String
+  opp_era   String
+  opp_ovr   Int
+  is_home   Boolean @default(false)
+  my_goals  Int
+  opp_goals Int
+  result    String
+
+  game Game @relation(fields: [game_id], references: [id], onDelete: Cascade)
+
+  @@map("matches")
+}
+
+model TeamEraStat {
+  id      String @id @default(uuid())
+  team    String
+  era     String
+  atk_ovr Int
+  def_ovr Int
+
+  @@unique([team, era])
+  @@map("team_era_stats")
+}
+
+model Ranking {
+  id                 String   @id @default(uuid())
+  game_id            String   @unique
+  rank               String
+  destaque_player_id String
+  destaque_overall   Int
+  created_at         DateTime @default(now())
+
+  game            Game   @relation(fields: [game_id], references: [id], onDelete: Cascade)
+  destaque_player Player @relation(fields: [destaque_player_id], references: [id])
+
+  @@map("rankings")
+}
