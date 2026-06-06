@@ -5,3 +5,6 @@ dist/
 *.log
 .DS_Store
 tsconfig.tsbuildinfo
+prisma.config.js
+prisma.config.js.map
+prisma.config.d.ts
