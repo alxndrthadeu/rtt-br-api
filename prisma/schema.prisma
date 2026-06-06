@@ -35,6 +35,7 @@ model Player {
   pos_sec1      String?
   pos_sec2      String?
   estilo        String
+  trait         String?
 
   team     Team      @relation(fields: [team_id], references: [id])
   era      Era       @relation(fields: [era_id], references: [id])
