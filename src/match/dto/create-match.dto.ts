@@ -1,4 +1,4 @@
-import { IsInt, IsString, IsUUID } from 'class-validator';
+import { IsBoolean, IsInt, IsOptional, IsString, IsUUID } from 'class-validator';
 
 export class CreateMatchDto {
   @IsUUID()
@@ -24,4 +24,8 @@ export class CreateMatchDto {
 
   @IsString()
   result: string;
+
+  @IsBoolean()
+  @IsOptional()
+  is_home?: boolean;
 }
