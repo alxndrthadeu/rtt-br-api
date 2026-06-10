@@ -97,7 +97,10 @@ Definir explicitamente a fronteira de persistência: ou `playSeason` grava `matc
 
 **Categoria**: Segurança / Manutenção
 **Severidade**: MÉDIO
-**Status**: [CONFIRMADO]
+**Status**: ~~[CONFIRMADO]~~ ✅ RESOLVIDO
+**Branch**: `fix/RISK-006-prisma-exception-filter`
+**Resolvido em**: 2026-06-10
+**Verificação**: `npx tsc --noEmit` exit 0 + `npm run build` OK
 **Localização**: `src/main.ts` (sem `useGlobalFilters`); todos os services
 
 **Evidência**:
