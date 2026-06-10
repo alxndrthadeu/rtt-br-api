@@ -7,7 +7,10 @@ Achados da análise estática (FASE 3). Fatos = "o que o código faz"; opiniões
 
 **Categoria**: Dados / Configuração
 **Severidade**: CRÍTICO
-**Status**: [CONFIRMADO]
+**Status**: ~~[CONFIRMADO]~~ ✅ RESOLVIDO
+**Branch**: `config/RISK-001-migration-trait`
+**Resolvido em**: 2026-06-10
+**Verificação**: `prisma validate` OK + `npm run build` OK (sem infra de testes no projeto)
 **Localização**: `prisma/schema.prisma` linha 38 (`trait String?`) vs. `prisma/migrations/*` (nenhuma adiciona `trait`)
 
 **Evidência**:
