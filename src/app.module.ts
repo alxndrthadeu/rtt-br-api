@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { APP_GUARD } from '@nestjs/core';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { PrismaModule } from './prisma/prisma.module';
 import { GameModule } from './game/game.module';
 import { MatchModule } from './match/match.module';
@@ -13,6 +15,7 @@ import { TeamStatsModule } from './team-stats/team-stats.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
+    ThrottlerModule.forRoot([{ ttl: 60000, limit: 100 }]),
     PrismaModule,
     EraModule,
     TeamModule,
@@ -23,5 +26,6 @@ import { TeamStatsModule } from './team-stats/team-stats.module';
     RankingModule,
     TeamStatsModule,
   ],
+  providers: [{ provide: APP_GUARD, useClass: ThrottlerGuard }],
 })
 export class AppModule {}
