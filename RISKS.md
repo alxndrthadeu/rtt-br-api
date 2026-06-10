@@ -114,10 +114,10 @@ Adicionar um `PrismaClientExceptionFilter` (ou filtro global) que mapeie código
 
 **Categoria**: Segurança
 **Severidade**: MÉDIO
-**Status**: ~~[CONFIRMADO]~~ ⚠️ PARCIALMENTE RESOLVIDO — só `helmet`; auth/rate-limit/proteção de `refresh` seguem [REQUER DECISÃO]
+**Status**: ~~[CONFIRMADO]~~ ⚠️ PARCIALMENTE RESOLVIDO — `helmet` + rate-limit (throttler) com limite estrito em `POST /team-stats/refresh`; **autenticação** segue [REQUER DECISÃO]
 **Branch**: `security/RISK-007-helmet`
 **Resolvido em**: 2026-06-10
-**Verificação**: `npx tsc --noEmit` exit 0 + `npm run build` OK; `helmet` resolve para função em runtime (CJS)
+**Verificação**: `npx tsc --noEmit` exit 0 + `npm run build` OK; `helmet` resolve para função em runtime (CJS); throttler 6.5.0 (peer compatível com Nest 10)
 **Localização**: `src/main.ts`; todos os controllers
 
 **Evidência**:
