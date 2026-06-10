@@ -148,7 +148,10 @@ Implementar `onModuleDestroy() { await this.$disconnect(); }` e/ou `app.enableSh
 
 **Categoria**: Dados
 **Severidade**: BAIXO
-**Status**: [CONFIRMADO]
+**Status**: ~~[CONFIRMADO]~~ ✅ RESOLVIDO
+**Branch**: `fix/RISK-009-match-dto-is-home`
+**Resolvido em**: 2026-06-10
+**Verificação**: `npx tsc --noEmit` exit 0 + `npm run build` OK
 **Localização**: `src/match/dto/create-match.dto.ts`; `prisma/schema.prisma` (`Match.is_home`)
 
 **Evidência**:
