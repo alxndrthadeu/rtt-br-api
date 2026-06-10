@@ -182,7 +182,10 @@ Migrar gradualmente para `strict: true`; validar env vars no boot (ex.: schema d
 
 **Categoria**: Manutenção (correção lúdica)
 **Severidade**: BAIXO
-**Status**: [CONFIRMADO]
+**Status**: ~~[CONFIRMADO]~~ ✅ RESOLVIDO
+**Branch**: `refactor/RISK-011-fisher-yates`
+**Resolvido em**: 2026-06-10
+**Verificação**: `npx tsc --noEmit` exit 0 + `npm run build` OK
 **Localização**: `src/game/game.service.ts` linhas 179-180
 
 **Evidência**:

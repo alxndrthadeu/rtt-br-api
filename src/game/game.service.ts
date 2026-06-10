@@ -176,8 +176,8 @@ export class GameService {
       );
     }
 
-    const firstTurn  = pool.sort(() => Math.random() - 0.5).slice(0, POOL_SIZE);
-    const secondTurn = [...firstTurn].sort(() => Math.random() - 0.5);
+    const firstTurn  = this.shuffle(pool).slice(0, POOL_SIZE);
+    const secondTurn = this.shuffle(firstTurn);
     const homeInFirst = firstTurn.map(() => Math.random() > 0.5);
 
     const schedule: ScheduledMatch[] = [];
@@ -190,6 +190,16 @@ export class GameService {
     });
 
     return { schedule, opponents: firstTurn, pool };
+  }
+
+  // Fisher–Yates: permutação uniforme (sort(() => random - 0.5) é enviesado)
+  private shuffle<T>(items: T[]): T[] {
+    const result = [...items];
+    for (let i = result.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [result[i], result[j]] = [result[j], result[i]];
+    }
+    return result;
   }
 
   // ─── Tabela estimada (simulação em background) ────────────────────────────────
