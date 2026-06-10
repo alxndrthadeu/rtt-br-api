@@ -60,7 +60,10 @@ Remover `prisma/seed.sql` ou regenerá-lo a partir do `seed.ts` (única fonte de
 
 **Categoria**: Dados / Manutenção
 **Severidade**: ALTO
-**Status**: [CONFIRMADO]
+**Status**: ~~[CONFIRMADO]~~ ✅ RESOLVIDO (parte segura) — validação de borda em DTO permanece [REQUER DECISÃO]
+**Branch**: `refactor/RISK-004-centralizar-posicoes`
+**Resolvido em**: 2026-06-10
+**Verificação**: `npx tsc --noEmit` exit 0 + `npm run build` OK; diff confirma valores de runtime inalterados
 **Localização**: `src/game/game.service.ts` linhas 11-13 (`SCORER_WEIGHTS`); `src/team-stats/team-stats.service.ts` linhas 4-5 (`ATTACK_ROLES`/`DEFENSE_ROLES`)
 
 **Evidência**:
