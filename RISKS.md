@@ -24,7 +24,10 @@ Gerar a migration faltante (`prisma migrate dev --name add_player_trait`) e vers
 
 **Categoria**: Configuração / Dados
 **Severidade**: ALTO
-**Status**: [CONFIRMADO]
+**Status**: ~~[CONFIRMADO]~~ ✅ RESOLVIDO
+**Branch**: `config/RISK-002-migrate-deploy`
+**Resolvido em**: 2026-06-10
+**Verificação**: alteração isolada no `CMD`; `DIRECT_URL` confirmado no runtime do Railway; CLI do Prisma presente via devDeps (`npm ci`)
 **Localização**: `Dockerfile` (RUN `npm ci && npm run build`; CMD `node dist/main.js`)
 
 **Evidência**:
