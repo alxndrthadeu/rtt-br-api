@@ -12,18 +12,16 @@ Correção dos achados de `RISKS.md` seguindo git flow (uma branch por risco, co
 
 | Risk | Sev. | Categoria | Branch | PR | Verificação | Status |
 |------|------|-----------|--------|-----|-------------|--------|
-| RISK-001 | CRÍTICO | Config/Dados | `config/RISK-001-migration-trait` | pendente¹ | `prisma validate` + build | ✅ corrigido |
-| RISK-003 | ALTO | Manutenção | `refactor/RISK-003-remove-seed-sql` | pendente¹ | build + grep sem refs | ✅ corrigido |
-| RISK-004 | ALTO | Dados/Manut. | `refactor/RISK-004-centralizar-posicoes` | pendente¹ | tsc 0 + build (valores inalterados) | ✅ parte segura |
-| RISK-006 | MÉDIO | Seg./Manut. | `fix/RISK-006-prisma-exception-filter` | pendente¹ | tsc 0 + build | ✅ corrigido |
-| RISK-007 | MÉDIO | Segurança | `security/RISK-007-helmet` | pendente¹ | tsc 0 + build | ⚠️ parcial (só helmet) |
-| RISK-008 | BAIXO | Config | `config/RISK-008-prisma-shutdown` | pendente¹ | tsc 0 + build | ✅ corrigido |
-| RISK-009 | BAIXO | Dados | `fix/RISK-009-match-dto-is-home` | pendente¹ | tsc 0 + build | ✅ corrigido |
-| RISK-011 | BAIXO | Manutenção | `refactor/RISK-011-fisher-yates` | pendente¹ | tsc 0 + build | ✅ corrigido |
+| RISK-001 | CRÍTICO | Config/Dados | `config/RISK-001-migration-trait` | #2 | `prisma validate` + build | ✅ corrigido |
+| RISK-003 | ALTO | Manutenção | `refactor/RISK-003-remove-seed-sql` | #3 | build + grep sem refs | ✅ corrigido |
+| RISK-004 | ALTO | Dados/Manut. | `refactor/RISK-004-centralizar-posicoes` | #4 | tsc 0 + build (valores inalterados) | ✅ parte segura |
+| RISK-009 | BAIXO | Dados | `fix/RISK-009-match-dto-is-home` | #5 | tsc 0 + build | ✅ corrigido |
+| RISK-006 | MÉDIO | Seg./Manut. | `fix/RISK-006-prisma-exception-filter` | #6 | tsc 0 + build | ✅ corrigido |
+| RISK-007 | MÉDIO | Segurança | `security/RISK-007-helmet` | #7 | tsc 0 + build | ⚠️ parcial (só helmet) |
+| RISK-008 | BAIXO | Config | `config/RISK-008-prisma-shutdown` | #8 | tsc 0 + build | ✅ corrigido |
+| RISK-011 | BAIXO | Manutenção | `refactor/RISK-011-fisher-yates` | #9 | tsc 0 + build | ✅ corrigido |
 
-¹ **PRs pendentes**: `git push` retorna **403** (a conta `leandromenegazzo` ainda não tem escrita em `alxndrthadeu/rtt-br-api`) e o `gh` não está autenticado. Todas as branches estão locais, prontas para push/PR assim que o acesso for liberado (`gh auth login` + `git push`).
-
-Cada branch tem 2 commits: a correção (`<prefixo>(RISK-NNN): ...`) e `docs(RISK-NNN): marca como resolvido` no `RISKS.md`. RISK-007 também inclui `package.json`/`package-lock.json` (helmet ^8.2.0).
+Docs-base mesclados via **PR #1** (`docs/analise-arquitetura`). Cada PR de correção tem 2 commits: a correção (`<prefixo>(RISK-NNN): ...`) e `docs(RISK-NNN): marca como resolvido` no `RISKS.md`. RISK-007 também inclui `package.json`/`package-lock.json` (helmet ^8.2.0).
 
 ## Riscos Não Implementados (decisão de negócio)
 
