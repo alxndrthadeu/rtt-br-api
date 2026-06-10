@@ -131,7 +131,10 @@ Adicionar `helmet`, `@nestjs/throttler` (ao menos nos POSTs), limite de body, e 
 
 **Categoria**: Configuração
 **Severidade**: BAIXO
-**Status**: [CONFIRMADO]
+**Status**: ~~[CONFIRMADO]~~ ✅ RESOLVIDO
+**Branch**: `config/RISK-008-prisma-shutdown`
+**Resolvido em**: 2026-06-10
+**Verificação**: `npx tsc --noEmit` exit 0 + `npm run build` OK
 **Localização**: `src/prisma/prisma.service.ts`; `src/main.ts`
 
 **Evidência**:
