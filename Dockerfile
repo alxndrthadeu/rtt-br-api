@@ -13,4 +13,5 @@ RUN npm ci && npm run build
 
 EXPOSE 8080
 
-CMD ["node", "dist/main.js"]
+# Aplica migrations pendentes (usa DIRECT_URL via prisma.config.ts) antes de subir a API.
+CMD ["sh", "-c", "npx prisma migrate deploy && node dist/main.js"]
