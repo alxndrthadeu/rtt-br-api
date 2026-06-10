@@ -44,7 +44,10 @@ Adicionar `prisma migrate deploy` num passo de release (entrypoint ou comando de
 
 **Categoria**: Manutenção / Dados
 **Severidade**: ALTO
-**Status**: [CONFIRMADO]
+**Status**: ~~[CONFIRMADO]~~ ✅ RESOLVIDO
+**Branch**: `refactor/RISK-003-remove-seed-sql`
+**Resolvido em**: 2026-06-10
+**Verificação**: `npm run build` OK; sem referência funcional a `seed.sql` (grep) — só `seed.ts` é usado em `db:seed`
 **Localização**: `prisma/seed.sql` (731 linhas)
 
 **Evidência**:

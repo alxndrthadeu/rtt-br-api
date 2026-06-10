@@ -27,7 +27,7 @@ API NestJS 10 que alimenta um jogo de "fantasy" do Brasileirão histórico: o us
 - Deletar um `Game` faz cascade em `drafts`, `matches` e `ranking` (definido no schema). Não há cascade de `players`.
 
 ## Armadilhas Conhecidas
-- **`seed.ts` é o seed canônico** (`npm run db:seed` → `tsx prisma/seed.ts`); ele normaliza posições e TRUNCA `players/teams/eras`. **`prisma/seed.sql` está DESATUALIZADO** e incompatível com o schema atual (insere `teams.era_id`, coluna que foi removida; usa posições cruas `MEIA/ME/MD`; UUIDs diferentes). Não use o `.sql`.
+- **`seed.ts` é o seed canônico** (`npm run db:seed` → `tsx prisma/seed.ts`); ele normaliza posições (`MEIA/ME/MD → MEI`) e TRUNCA `players/teams/eras`. É a única fonte de seed (o antigo `prisma/seed.sql`, desatualizado e incompatível com o schema, foi removido — ver RISKS.md RISK-003).
 - **A coluna `players.trait` existe no `schema.prisma` mas NÃO tem migration.** Banco criado só via `prisma migrate deploy` não terá a coluna e as queries de Player do Prisma vão falhar. Use `npm run db:push` ou crie a migration faltante (ver RISKS.md RISK-001).
 - O `Dockerfile` (deploy Railway) **não roda `prisma migrate deploy`** — só `prisma generate` + `nest build`. Aplicar schema é manual.
 - `POST /game/:id/play` retorna `matches`, `leagueTable` e artilheiros, mas **não persiste** as linhas de `matches` (só atualiza os agregados no `games`). Quem grava `matches` é o `POST /match` separado.
