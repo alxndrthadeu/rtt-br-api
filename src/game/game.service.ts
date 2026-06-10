@@ -2,13 +2,14 @@ import { BadRequestException, Injectable, NotFoundException } from '@nestjs/comm
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateGameDto } from './dto/create-game.dto';
 import { UpdateGameDto } from './dto/update-game.dto';
+import { Position } from '../common/positions';
 
 const HOME_BOOST = 1.08;
 const BASE_LAMBDA = 1.2;
 const POOL_SIZE = 19;
 
 // Pesos por posição para selecionar artilheiros
-const SCORER_WEIGHTS: Record<string, number> = {
+const SCORER_WEIGHTS: Record<Position, number> = {
   CA: 8, PE: 5, PD: 5, MEI: 3, LD: 1, LE: 1, ZAG: 1, GK: 0,
 };
 

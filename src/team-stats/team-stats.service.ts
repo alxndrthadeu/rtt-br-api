@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import { Position } from '../common/positions';
 
-const ATTACK_ROLES = new Set(['CA', 'PE', 'PD', 'MEI']);
-const DEFENSE_ROLES = new Set(['GK', 'ZAG', 'LD', 'LE', 'MEI']);
+const ATTACK_ROLES = new Set<string>(['CA', 'PE', 'PD', 'MEI'] satisfies Position[]);
+const DEFENSE_ROLES = new Set<string>(['GK', 'ZAG', 'LD', 'LE', 'MEI'] satisfies Position[]);
 const MIN_PLAYERS = 5;
 
 @Injectable()
